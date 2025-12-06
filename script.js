@@ -23,7 +23,7 @@ function createGlowParticles() {
 function updateCountdown() {
     const now = new Date().getTime();
     const targetDate = now + (3 *1000);
-    
+
     const timer = setInterval(() => {
         const now = new Date().getTime();
         const distance = targetDate - now;
@@ -267,4 +267,3 @@ document.querySelector('.btn').addEventListener('click', () => {
 // Initialize on page load
 createGlowParticles();
 updateCountdown();
-
