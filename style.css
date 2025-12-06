@@ -223,13 +223,15 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #667eea 100%);
     background-size: 400% 400%;
     animation: gradientShift 4s ease infinite;
-    display: none;
+    display: none !important;
     justify-content: center;
     align-items: center;
     z-index: 1000;
     flex-direction: column;
     backdrop-filter: blur(10px);
     overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
 }
 
 @keyframes gradientShift {
@@ -239,7 +241,9 @@ body {
 }
 
 .celebration-screen.active {
-    display: flex;
+    display: flex !important;
+    visibility: visible;
+    opacity: 1;
     animation: celebrationFadeIn 0.8s ease-out;
 }
 
