@@ -34,7 +34,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    min-height: calc(var(--vh, 1vh) * 100);
     padding: 20px;
     width: 100%;
 }
@@ -519,4 +519,8 @@ body {
     .celebration-emoji { font-size: 4rem; margin-top: 20px; }
     .celebration-message { font-size: 1.1rem; margin-top: 25px; }
     .celebration-name { font-size: 1.5rem; margin-top: 10px; }
+}
+html, body {
+    height: calc(var(--vh, 1vh) * 100);
+    overflow-x: hidden;
 }
