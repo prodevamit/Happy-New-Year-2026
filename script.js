@@ -21,8 +21,7 @@ function createGlowParticles() {
 }
 
 function updateCountdown() {
-    const now = new Date().getTime();
-    const targetDate = now + (3 *1000);
+    const targetDate = new Date(2026, 0, 1).getTime();
 
     const timer = setInterval(() => {
         const now = new Date().getTime();
@@ -267,3 +266,4 @@ document.querySelector('.btn').addEventListener('click', () => {
 // Initialize on page load
 createGlowParticles();
 updateCountdown();
+
