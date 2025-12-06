@@ -1,3 +1,10 @@
+// Fix mobile viewport height issue
+function setVh() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+setVh();
+window.addEventListener('resize', setVh);
 function createGlowParticles() {
     const container = document.getElementById('glowParticlesContainer');
     const particleCount = 15;
