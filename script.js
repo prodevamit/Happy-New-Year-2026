@@ -1,16 +1,19 @@
-fetch('https://api.countapi.xyz/get/prodevamit-hny-2026/visits')
+// 👀 Count website visits (hit first, then show)
+fetch('https://api.countapi.xyz/hit/prodevamit-hny-2026/visits')
   .then(res => res.json())
   .then(data => {
       document.getElementById('visitCount').textContent = data.value;
-  });
+  })
+  .catch(err => console.error(err));
 
+// 🖱 Load click count
 fetch('https://api.countapi.xyz/get/prodevamit-hny-2026/clicks')
   .then(res => res.json())
   .then(data => {
-      document.getElementById('clickCount').textContent = data.value;
-  });
-// 👀 Count website visits
-fetch('https://api.countapi.xyz/hit/prodevamit-hny-2026/visits');
+      document.getElementById('clickCount').textContent = data.value || 0;
+  })
+  .catch(err => console.error(err));
+
 // Fix mobile viewport height issue
 function setVh() {
     let vh = window.innerHeight * 0.01;
@@ -273,16 +276,21 @@ function playSound() {
 const btn = document.querySelector('.btn');
 if (btn) {
     btn.addEventListener('click', () => {
-        fetch('https://api.countapi.xyz/hit/prodevamit-hny-2026/clicks');
+        fetch('https://api.countapi.xyz/hit/prodevamit-hny-2026/clicks')
+          .then(res => res.json())
+          .then(data => {
+              document.getElementById('clickCount').textContent = data.value;
+          })
+          .catch(err => console.error(err));
+
         createConfetti(150);
         triggerPartyPoppers();
         playSound();
     });
 }
-
-
 // Initialize on page load
 createGlowParticles();
 updateCountdown();
+
 
 
