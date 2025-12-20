@@ -1,3 +1,16 @@
+fetch('https://api.countapi.xyz/get/prodevamit-hny-2026/visits')
+  .then(res => res.json())
+  .then(data => {
+      document.getElementById('visitCount').textContent = data.value;
+  });
+
+fetch('https://api.countapi.xyz/get/prodevamit-hny-2026/clicks')
+  .then(res => res.json())
+  .then(data => {
+      document.getElementById('clickCount').textContent = data.value;
+  });
+// 👀 Count website visits
+fetch('https://api.countapi.xyz/hit/prodevamit-hny-2026/visits');
 // Fix mobile viewport height issue
 function setVh() {
     let vh = window.innerHeight * 0.01;
@@ -257,13 +270,19 @@ function playSound() {
     osc2.stop(audioContext.currentTime + 0.7);
 }
 
-document.querySelector('.btn').addEventListener('click', () => {
-    createConfetti(150);
-    triggerPartyPoppers();
-    playSound();
-});
+const btn = document.querySelector('.btn');
+if (btn) {
+    btn.addEventListener('click', () => {
+        fetch('https://api.countapi.xyz/hit/prodevamit-hny-2026/clicks');
+        createConfetti(150);
+        triggerPartyPoppers();
+        playSound();
+    });
+}
+
 
 // Initialize on page load
 createGlowParticles();
 updateCountdown();
+
 
