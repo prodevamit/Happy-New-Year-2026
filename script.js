@@ -1,19 +1,3 @@
-// 👀 Count website visits (hit first, then show)
-fetch('https://countapi.xyz/hit/prodevamit-hny-2026/visits')
-  .then(res => res.json())
-  .then(data => {
-      document.getElementById('visitCount').textContent = data.value;
-  })
-  .catch(err => console.error(err));
-
-// 🖱 Load click count
-fetch('https://countapi.xyz/get/prodevamit-hny-2026/clicks')
-  .then(res => res.json())
-  .then(data => {
-      document.getElementById('clickCount').textContent = data.value || 0;
-  })
-  .catch(err => console.error(err));
-
 // Fix mobile viewport height issue
 function setVh() {
     let vh = window.innerHeight * 0.01;
@@ -74,8 +58,16 @@ function showCelebration() {
 function triggerPartyPoppers() {
     // Left popper
     createPartyPopper(window.innerWidth * 0.1, 50, -1);
+    createPartyPopper(window.innerWidth * 0.1, 50, 1);
     // Right popper
     createPartyPopper(window.innerWidth * 0.9, 50, 1);
+    createPartyPopper(window.innerWidth * 0.9, 50, -1);
+    // Center popper
+    createPartyPopper(window.innerWidth / 2, 50, -1);
+    createPartyPopper(window.innerWidth / 2, 50, 1);
+    // Additional poppers
+    createPartyPopper(window.innerWidth * 0.3, 50, 3);
+    createPartyPopper(window.innerWidth * 0.7, 50, -3);
 }
 
 function createPartyPopper(startX, startY, direction) {
@@ -273,25 +265,13 @@ function playSound() {
     osc2.stop(audioContext.currentTime + 0.7);
 }
 
-const btn = document.querySelector('.btn');
-if (btn) {
-    btn.addEventListener('click', () => {
-        fetch('https://countapi.xyz/hit/prodevamit-hny-2026/clicks')
-          .then(res => res.json())
-          .then(data => {
-              document.getElementById('clickCount').textContent = data.value;
-          })
-          .catch(err => console.error(err));
+document.querySelector('.btn').addEventListener('click', () => {
+    createConfetti(150);
+    triggerPartyPoppers();
+    playSound();
+});
 
-        createConfetti(150);
-        triggerPartyPoppers();
-        playSound();
-    });
-}
 // Initialize on page load
 createGlowParticles();
 updateCountdown();
-
-
-
 
