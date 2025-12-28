@@ -524,23 +524,4 @@ html, body {
     height: calc(var(--vh, 1vh) * 100);
     overflow-x: hidden;
 }
-/* ==============================
-   Visitor & Click Counter (Top Left)
-   ============================== */
-
-#stats {
-    position: fixed;
-    top: 12px;
-    left: 12px;
-    z-index: 9999;
-    background: rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(6px);
-    padding: 6px 10px;
-    border-radius: 8px;
-    color: #fff;
-    font-size: 13px;
-    font-family: Arial, sans-serif;
-    pointer-events: none;
-}
-
 
